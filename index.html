@@ -2,28 +2,75 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <title>RPG - Dragon Repeller</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Dragon Repeller - Enhanced RPG</title>
   </head>
   <body>
     <div id="game">
       <div id="stats">
-        <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
-        <span class="stat">Health: <strong><span id="healthText">100</span></strong></span>
-        <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
+        <span class="stat">
+          <i class="fas fa-star stat-icon"></i>
+          XP: <strong><span id="xpText">0</span></strong>
+        </span>
+        <span class="stat">
+          <i class="fas fa-heart stat-icon"></i>
+          Health: <strong><span id="healthText">100</span></strong>
+          <div class="progress-bar health-bar">
+            <div class="progress-fill" id="healthBar" style="width: 100%"></div>
+          </div>
+        </span>
+        <span class="stat">
+          <i class="fas fa-coins stat-icon"></i>
+          Gold: <strong><span id="goldText">50</span></strong>
+        </span>
       </div>
+      
       <div id="controls">
-        <button id="button1">Go to store</button>
-        <button id="button2">Go to cave</button>
-        <button id="button3">Fight dragon</button>
+        <button id="button1"><i class="fas fa-store"></i> Go to store</button>
+        <button id="button2"><i class="fas fa-mountain"></i> Go to cave</button>
+        <button id="button3"><i class="fas fa-dragon"></i> Fight dragon</button>
       </div>
+      
       <div id="monsterStats">
-        <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
-        <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+        <span class="stat">
+          <i class="fas fa-skull stat-icon"></i>
+          Monster: <strong><span id="monsterName"></span></strong>
+        </span>
+        <span class="stat">
+          <i class="fas fa-heart-broken stat-icon"></i>
+          Health: <strong><span id="monsterHealth"></span></strong>
+          <div class="progress-bar monster-health-bar">
+            <div class="progress-fill" id="monsterHealthBar" style="width: 100%"></div>
+          </div>
+        </span>
       </div>
+      
       <div id="text">
-        Welcome to Dragon Repeller. You must defeat the dragon that is preventing people from leaving the town. You are in the town square. Where do you want to go? Use the buttons above.
+        <div id="textContent">
+          Welcome to Dragon Repeller! <i class="fas fa-sword"></i><br>
+          You must defeat the dragon that is preventing people from leaving the town. 
+          You are in the town square. Where do you want to go? Use the buttons above.
+        </div>
+        <div id="inventory" class="inventory" style="display: none;">
+          <strong>Inventory:</strong> <span id="inventoryText"></span>
+        </div>
       </div>
+      
+      <!-- Audio elements for sound effects -->
+      <audio id="attackSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+      </audio>
+      <audio id="healSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+      </audio>
+      <audio id="victorySound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+      </audio>
+      <audio id="defeatSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+      </audio>
     </div>
     <script src="./script.js"></script>
   </body>
